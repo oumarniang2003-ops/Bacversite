@@ -20,7 +20,7 @@ Le développement de Bacversité a franchi une étape importante avec l'ajout de
 
 ### 2. Pages Publiques Étudiantes (Partie 2) - Redesign Campusen
 Toutes les pages publiques ont été repensées et alignées sur la charte graphique de la plateforme **Campusen** (formations.campusen.sn) :
-- **Structure Générale** : Fond gris clair (`bg-gray-50`) et fil d'ariane vert menthe clair (`bg-emerald-50`) indiquant la navigation.
+- **Structure Générale** : Fond gris clair (`bg-gray-100`) et fil d'ariane vert menthe clair (`bg-emerald-50`) indiquant la navigation.
 - **Filtres Avancés (Gauche)** : Un panneau blanc épuré sur le côté contenant les critères de filtrage :
   - Recherche textuelle par mots-clés.
   - Sélection de la ville.
@@ -28,17 +28,19 @@ Toutes les pages publiques ont été repensées et alignées sur la charte graph
   - Lien de réinitialisation rapide des filtres.
 - **Résultats (Droite)** : 
   - Affichage clair du nombre d'éléments trouvés (ex: "20 écoles trouvées").
-  - Cartes de résultats blanches (`bg-white rounded-xl shadow-sm`) avec pastilles colorées pour le type d'établissement (Public en vert menthe, Privé en violet) ou le statut d'inscription.
+  - Cartes de résultats blanches (`bg-white rounded-lg shadow-sm`) avec pastilles colorées pour le type d'établissement (Public en vert menthe, Privé en violet) ou le statut d'inscription.
   - Liens d'action "Voir détails →" et "Postuler en ligne →" en vert foncé (`text-emerald-600 font-semibold hover:underline`).
 
-Pages concernées par la refonte :
-- **Annuaire des Écoles (`/ecoles`)**
-- **Concours (`/concours`)**
-- **Bourses (`/bourses`)**
+### 3. Sobriété du Design & Suppression des gradients (Dernière étape)
+Conformément aux directives pour un design sobre et institutionnel inspiré de Campusen :
+- **Suppression des gradients** : Retrait de tous les dégradés bleus/indigo (`bg-gradient-to-*` et `bg-clip-text`) sur le logo, les boutons et les arrière-plans.
+- **Header & Navigation** : Fond blanc uni (`bg-white`) avec bordure fine, logo "B" sur carré de couleur émeraude unie, et accent vert émeraude (`text-emerald-600`) pour les états actifs.
+- **Hero & Accueil** : Suppression du motif de grille et de la lueur radiale en arrière-plan. Fond blanc uni épuré.
+- **Typographies & Effets** : Titres sobres en couleur foncée unie (`text-gray-900`), suppression des émojis flottants décoratifs et des ombres portées colorées ou animations hover de décalage (`hover:-translate-y-0.5`).
 
 ---
 
 ## 🚦 Résultats des Vérifications
 - **Compilation** : `npm run build` exécuté avec succès.
 - **Vérification Git** : Tous les fichiers ont été poussés sur la branche `main`.
-  - **Hash du Commit** : `492cbc18c0e087285a0dfdf07b88d23b73abeb61`
+  - **Hash du Commit** : `815632f1d29eab6bfd4a900f965fda64469962f4`
