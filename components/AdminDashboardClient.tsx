@@ -224,7 +224,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Rechercher par nom, ville..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 text-sm focus:bg-white dark:focus:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500/25 transition-all text-gray-900 dark:text-white"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 text-sm dark:focus:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500/25 transition-all text-gray-900 dark:text-white"
               />
               <svg className="w-5 h-5 absolute left-3 top-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -335,7 +335,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                     required
                     value={formState.nom}
                     onChange={(e) => setFormState({ ...formState, nom: e.target.value })}
-                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:bg-white"
+                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25"
                   />
                 </div>
 
@@ -346,7 +346,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                   <select
                     value={formState.type}
                     onChange={(e) => setFormState({ ...formState, type: e.target.value })}
-                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:bg-white"
+                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25"
                   >
                     <option value="Public">Public</option>
                     <option value="Privé">Privé</option>
@@ -361,7 +361,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                     type="text"
                     value={formState.ville}
                     onChange={(e) => setFormState({ ...formState, ville: e.target.value })}
-                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:bg-white"
+                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25"
                   />
                 </div>
 
@@ -374,7 +374,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                     value={formState.frais}
                     onChange={(e) => setFormState({ ...formState, frais: e.target.value })}
                     placeholder="Ex: Gratuit ou 50 000 FCFA/mois"
-                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:bg-white"
+                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25"
                   />
                 </div>
 
@@ -386,7 +386,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                     type="text"
                     value={formState.contact}
                     onChange={(e) => setFormState({ ...formState, contact: e.target.value })}
-                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:bg-white"
+                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25"
                   />
                 </div>
 
@@ -399,7 +399,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                     value={formState.site_web}
                     onChange={(e) => setFormState({ ...formState, site_web: e.target.value })}
                     placeholder="https://exemple.com"
-                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:bg-white"
+                    className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25"
                   />
                 </div>
 
@@ -413,7 +413,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                   value={formState.filieres}
                   onChange={(e) => setFormState({ ...formState, filieres: e.target.value })}
                   rows={2}
-                  className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:bg-white"
+                  className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25"
                 />
               </div>
 
@@ -425,7 +425,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                   value={formState.conditions_admission}
                   onChange={(e) => setFormState({ ...formState, conditions_admission: e.target.value })}
                   rows={3}
-                  className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25 focus:bg-white"
+                  className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25"
                 />
               </div>
 
