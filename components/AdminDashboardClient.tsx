@@ -252,10 +252,10 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-50 dark:bg-gray-950">
       
       {/* Sidebar Navigation */}
-      <aside className="w-full md:w-64 bg-white dark:bg-gray-900 border-b md:border-b-0 md:border-r border-gray-200/80 dark:border-gray-800/80 shrink-0 flex flex-col justify-between">
+      <aside className="w-full md:w-64 bg-white dark:bg-gray-900 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-800 shrink-0 flex flex-col justify-between">
         <div className="p-6">
           <div className="flex items-center space-x-2.5 mb-8">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white font-bold shadow-md shadow-blue-500/25">
+            <div className="w-9 h-9 rounded-lg bg-emerald-600 dark:bg-emerald-500 flex items-center justify-center text-white font-bold">
               B
             </div>
             <span className="text-lg font-bold text-gray-900 dark:text-white">Admin Bacversité</span>
@@ -264,9 +264,9 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
           <nav className="space-y-1">
             <button
               onClick={() => { setActiveTab("ecoles"); setSearch(""); }}
-              className={`w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
+              className={`w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                 activeTab === "ecoles"
-                  ? "bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400"
+                  ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400"
                   : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/35"
               }`}
             >
@@ -278,9 +278,9 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
 
             <button
               onClick={() => { setActiveTab("concours"); setSearch(""); }}
-              className={`w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
+              className={`w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                 activeTab === "concours"
-                  ? "bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400"
+                  ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400"
                   : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/35"
               }`}
             >
@@ -292,9 +292,9 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
 
             <button
               onClick={() => { setActiveTab("bourses"); setSearch(""); }}
-              className={`w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
+              className={`w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                 activeTab === "bourses"
-                  ? "bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400"
+                  ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400"
                   : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/35"
               }`}
             >
@@ -306,9 +306,9 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
 
             <button
               onClick={() => { setActiveTab("etudes"); setSearch(""); }}
-              className={`w-full flex items-center space-x-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
+              className={`w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                 activeTab === "etudes"
-                  ? "bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400"
+                  ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400"
                   : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/35"
               }`}
             >
@@ -321,14 +321,14 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
         </div>
 
         {/* Admin Footer */}
-        <div className="p-6 border-t border-gray-100 dark:border-gray-800/80 bg-gray-50/50 dark:bg-gray-900/50">
+        <div className="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
           <div className="mb-4">
-            <p className="text-xs text-gray-400 dark:text-gray-600">Session administrateur</p>
+            <p className="text-xs text-gray-450 dark:text-gray-500">Session administrateur</p>
             <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 truncate">{adminEmail}</p>
           </div>
           <button
             onClick={handleLogout}
-            className="w-full py-2.5 text-center text-sm font-semibold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/20 hover:bg-red-100 dark:hover:bg-red-950/40 rounded-xl transition-all"
+            className="w-full py-2.5 text-center text-sm font-semibold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/20 hover:bg-red-100 dark:hover:bg-red-950/40 rounded-lg transition-colors"
           >
             Déconnexion
           </button>
@@ -339,9 +339,9 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
       <main className="flex-grow p-6 md:p-8 space-y-6">
         
         {/* Top bar title and actions */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-150/60 dark:border-gray-800/80 shadow-sm">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm">
           <div>
-            <h1 className="text-xl font-extrabold text-gray-900 dark:text-white uppercase tracking-wider">
+            <h1 className="text-lg font-extrabold text-gray-900 dark:text-white uppercase tracking-wider">
               {activeTab === "ecoles" && "Gestion des Écoles"}
               {activeTab === "concours" && "Gestion des Concours"}
               {activeTab === "bourses" && "Gestion des Bourses"}
@@ -356,14 +356,14 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
           </div>
           <button
             onClick={openAddModal}
-            className="px-5 py-2.5 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
+            className="px-5 py-2.5 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 rounded-lg shadow-sm transition-colors duration-200 cursor-pointer"
           >
             + Ajouter un élément
           </button>
         </div>
 
         {/* List Controls (Search & Filters) */}
-        <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-150/60 dark:border-gray-800/80 shadow-sm space-y-4">
+        <div className="bg-white dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm space-y-4">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="relative flex-1">
               <input
@@ -371,7 +371,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Rechercher par mot-clé..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/25 transition-all text-gray-900 dark:text-white"
+                className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-205 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-colors text-gray-900 dark:text-white"
               />
               <svg className="w-5 h-5 absolute left-3 top-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -382,7 +382,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
               <select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value)}
-                className="px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/25 transition-all text-gray-900 dark:text-white"
+                className="px-4 py-2.5 rounded-lg border border-gray-205 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 text-gray-900 dark:text-white"
               >
                 <option value="">Tous les types</option>
                 <option value="Public">Public</option>
@@ -395,7 +395,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
           <div className="overflow-x-auto pt-2">
             {loading ? (
               <div className="flex justify-center items-center py-16">
-                <svg className="animate-spin h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin h-8 w-8 text-emerald-600" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                 </svg>
@@ -405,7 +405,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                 {/* 1. ECOLES TABLE */}
                 {activeTab === "ecoles" && (
                   ecoles.length === 0 ? <p className="text-center py-10 text-gray-500 text-sm">Aucune école trouvée.</p> : (
-                    <table className="min-w-full divide-y divide-gray-150 dark:divide-gray-800 text-sm">
+                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800 text-sm">
                       <thead>
                         <tr className="text-left font-semibold text-gray-400 dark:text-gray-500">
                           <th className="pb-3 pr-4">Nom</th>
@@ -416,22 +416,22 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                           <th className="pb-3 pl-4 text-right">Actions</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-gray-150/60 dark:divide-gray-800/40 text-gray-700 dark:text-gray-300">
+                      <tbody className="divide-y divide-gray-100 dark:divide-gray-850 text-gray-700 dark:text-gray-300">
                         {ecoles.map((item) => (
                           <tr key={item.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-900/30 transition-colors">
                             <td className="py-3.5 pr-4 font-bold text-gray-900 dark:text-white max-w-xs truncate">{item.nom}</td>
                             <td className="py-3.5 px-4">
                               <span className={`inline-flex px-2 py-0.5 rounded text-xs font-semibold ${
                                 item.type === "Public" 
-                                  ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400" 
-                                  : "bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400"
+                                  ? "bg-emerald-55 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-400" 
+                                  : "bg-purple-55 text-purple-700 dark:bg-purple-950/30 dark:text-purple-400"
                               }`}>{item.type}</span>
                             </td>
                             <td className="py-3.5 px-4">{item.ville || "-"}</td>
                             <td className="py-3.5 px-4 max-w-[120px] truncate">{item.frais || "-"}</td>
                             <td className="py-3.5 px-4 max-w-[120px] truncate">{item.contact || "-"}</td>
-                            <td className="py-3.5 pl-4 text-right space-x-2">
-                              <button onClick={() => openEditModal(item)} className="text-blue-600 hover:text-blue-700 dark:text-blue-400 transition-colors font-medium">Modifier</button>
+                            <td className="py-3.5 pl-4 text-right space-x-3">
+                              <button onClick={() => openEditModal(item)} className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 transition-colors font-medium">Modifier</button>
                               <button onClick={() => handleDelete(item.id)} className="text-red-600 hover:text-red-700 dark:text-red-400 transition-colors font-medium">Supprimer</button>
                             </td>
                           </tr>
@@ -444,7 +444,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                 {/* 2. CONCOURS TABLE */}
                 {activeTab === "concours" && (
                   concours.length === 0 ? <p className="text-center py-10 text-gray-500 text-sm">Aucun concours trouvé.</p> : (
-                    <table className="min-w-full divide-y divide-gray-150 dark:divide-gray-800 text-sm">
+                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800 text-sm">
                       <thead>
                         <tr className="text-left font-semibold text-gray-400 dark:text-gray-500">
                           <th className="pb-3 pr-4">Nom</th>
@@ -454,7 +454,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                           <th className="pb-3 pl-4 text-right">Actions</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-gray-150/60 dark:divide-gray-800/40 text-gray-700 dark:text-gray-300">
+                      <tbody className="divide-y divide-gray-100 dark:divide-gray-850 text-gray-700 dark:text-gray-300">
                         {concours.map((item) => (
                           <tr key={item.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-900/30 transition-colors">
                             <td className="py-3.5 pr-4 font-bold text-gray-900 dark:text-white max-w-xs truncate">{item.nom}</td>
@@ -465,8 +465,8 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                               </span>
                             </td>
                             <td className="py-3.5 px-4 max-w-[160px] truncate">{item.ecoles_liees || "-"}</td>
-                            <td className="py-3.5 pl-4 text-right space-x-2">
-                              <button onClick={() => openEditModal(item)} className="text-blue-600 hover:text-blue-700 dark:text-blue-400 transition-colors font-medium">Modifier</button>
+                            <td className="py-3.5 pl-4 text-right space-x-3">
+                              <button onClick={() => openEditModal(item)} className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 transition-colors font-medium">Modifier</button>
                               <button onClick={() => handleDelete(item.id)} className="text-red-600 hover:text-red-700 dark:text-red-400 transition-colors font-medium">Supprimer</button>
                             </td>
                           </tr>
@@ -479,7 +479,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                 {/* 3. BOURSES TABLE */}
                 {activeTab === "bourses" && (
                   bourses.length === 0 ? <p className="text-center py-10 text-gray-500 text-sm">Aucune bourse trouvée.</p> : (
-                    <table className="min-w-full divide-y divide-gray-150 dark:divide-gray-800 text-sm">
+                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800 text-sm">
                       <thead>
                         <tr className="text-left font-semibold text-gray-400 dark:text-gray-500">
                           <th className="pb-3 pr-4">Nom</th>
@@ -489,19 +489,19 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                           <th className="pb-3 pl-4 text-right">Actions</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-gray-150/60 dark:divide-gray-800/40 text-gray-700 dark:text-gray-300">
+                      <tbody className="divide-y divide-gray-100 dark:divide-gray-850 text-gray-700 dark:text-gray-300">
                         {bourses.map((item) => (
                           <tr key={item.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-900/30 transition-colors">
                             <td className="py-3.5 pr-4 font-bold text-gray-900 dark:text-white max-w-xs truncate">{item.nom}</td>
                             <td className="py-3.5 px-4">{item.pays || "-"}</td>
-                            <td className="py-3.5 px-4 font-medium text-blue-600 dark:text-blue-400">{item.montant || "-"}</td>
+                            <td className="py-3.5 px-4 font-medium text-emerald-600 dark:text-emerald-450">{item.montant || "-"}</td>
                             <td className="py-3.5 px-4">
                               <span className="font-semibold text-gray-900 dark:text-white">
                                 {item.date_limite ? new Date(item.date_limite).toLocaleDateString("fr-FR", { day: 'numeric', month: 'short', year: 'numeric' }) : "-"}
                               </span>
                             </td>
-                            <td className="py-3.5 pl-4 text-right space-x-2">
-                              <button onClick={() => openEditModal(item)} className="text-blue-600 hover:text-blue-700 dark:text-blue-400 transition-colors font-medium">Modifier</button>
+                            <td className="py-3.5 pl-4 text-right space-x-3">
+                              <button onClick={() => openEditModal(item)} className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 transition-colors font-medium">Modifier</button>
                               <button onClick={() => handleDelete(item.id)} className="text-red-600 hover:text-red-700 dark:text-red-400 transition-colors font-medium">Supprimer</button>
                             </td>
                           </tr>
@@ -514,7 +514,7 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                 {/* 4. ETUDES ET RANGER TABLE */}
                 {activeTab === "etudes" && (
                   etudes.length === 0 ? <p className="text-center py-10 text-gray-500 text-sm">Aucune destination trouvée.</p> : (
-                    <table className="min-w-full divide-y divide-gray-150 dark:divide-gray-800 text-sm">
+                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800 text-sm">
                       <thead>
                         <tr className="text-left font-semibold text-gray-400 dark:text-gray-500">
                           <th className="pb-3 pr-4">Pays</th>
@@ -523,14 +523,14 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                           <th className="pb-3 pl-4 text-right">Actions</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-gray-150/60 dark:divide-gray-800/40 text-gray-700 dark:text-gray-300">
+                      <tbody className="divide-y divide-gray-100 dark:divide-gray-850 text-gray-700 dark:text-gray-300">
                         {etudes.map((item) => (
                           <tr key={item.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-900/30 transition-colors">
                             <td className="py-3.5 pr-4 font-bold text-gray-900 dark:text-white">{item.pays}</td>
                             <td className="py-3.5 px-4">{item.cout_vie_estime || "-"}</td>
                             <td className="py-3.5 px-4 max-w-xs truncate">{item.partenaires || "-"}</td>
-                            <td className="py-3.5 pl-4 text-right space-x-2">
-                              <button onClick={() => openEditModal(item)} className="text-blue-600 hover:text-blue-700 dark:text-blue-400 transition-colors font-medium">Modifier</button>
+                            <td className="py-3.5 pl-4 text-right space-x-3">
+                              <button onClick={() => openEditModal(item)} className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 transition-colors font-medium">Modifier</button>
                               <button onClick={() => handleDelete(item.id)} className="text-red-600 hover:text-red-700 dark:text-red-400 transition-colors font-medium">Supprimer</button>
                             </td>
                           </tr>
@@ -549,15 +549,15 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
 
       {/* DYNAMIC ADD / EDIT MODALS */}
       {(showAddModal || showEditModal) && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex justify-center items-center p-4">
-          <div className="bg-white dark:bg-gray-900 w-full max-w-2xl rounded-2xl border border-gray-150 dark:border-gray-800 shadow-2xl p-6 relative">
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 flex justify-center items-center p-4">
+          <div className="bg-white dark:bg-gray-900 w-full max-w-2xl rounded-lg border border-gray-200 dark:border-gray-800 shadow-lg p-6 relative">
             
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-5">
               {showAddModal ? "Ajouter un élément" : "Modifier l'élément"} ({activeTab === "ecoles" ? "École" : activeTab === "concours" ? "Concours" : activeTab === "bourses" ? "Bourse" : "Destination"})
             </h3>
 
             {formError && (
-              <div className="mb-4 rounded-xl bg-red-50 dark:bg-red-950/20 border border-red-100 dark:border-red-900/50 p-4 text-sm text-red-600 dark:text-red-400">
+              <div className="mb-4 rounded-lg bg-red-50 dark:bg-red-950/20 border border-red-100 dark:border-red-900/50 p-4 text-sm text-red-600 dark:text-red-400">
                 {formError}
               </div>
             )}
@@ -569,38 +569,38 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Nom de l'établissement *</label>
-                    <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-lg border border-gray-250 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Type</label>
-                    <select value={formState.type || "Public"} onChange={(e) => setFormState({ ...formState, type: e.target.value })} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25">
+                    <select value={formState.type || "Public"} onChange={(e) => setFormState({ ...formState, type: e.target.value })} className="w-full rounded-lg border border-gray-250 bg-white dark:border-gray-800 dark:bg-gray-955 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30">
                       <option value="Public">Public</option>
                       <option value="Privé">Privé</option>
                     </select>
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Ville</label>
-                    <input type="text" value={formState.ville || ""} onChange={(e) => setFormState({ ...formState, ville: e.target.value })} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <input type="text" value={formState.ville || ""} onChange={(e) => setFormState({ ...formState, ville: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Frais de scolarité</label>
-                    <input type="text" value={formState.frais || ""} onChange={(e) => setFormState({ ...formState, frais: e.target.value })} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <input type="text" value={formState.frais || ""} onChange={(e) => setFormState({ ...formState, frais: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Contact</label>
-                    <input type="text" value={formState.contact || ""} onChange={(e) => setFormState({ ...formState, contact: e.target.value })} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <input type="text" value={formState.contact || ""} onChange={(e) => setFormState({ ...formState, contact: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Site Web</label>
-                    <input type="text" value={formState.site_web || ""} onChange={(e) => setFormState({ ...formState, site_web: e.target.value })} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <input type="text" value={formState.site_web || ""} onChange={(e) => setFormState({ ...formState, site_web: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div className="sm:col-span-2">
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Filières</label>
-                    <textarea value={formState.filieres || ""} onChange={(e) => setFormState({ ...formState, filieres: e.target.value })} rows={2} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <textarea value={formState.filieres || ""} onChange={(e) => setFormState({ ...formState, filieres: e.target.value })} rows={2} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div className="sm:col-span-2">
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Conditions d'admission</label>
-                    <textarea value={formState.conditions_admission || ""} onChange={(e) => setFormState({ ...formState, conditions_admission: e.target.value })} rows={3} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <textarea value={formState.conditions_admission || ""} onChange={(e) => setFormState({ ...formState, conditions_admission: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                 </div>
               )}
@@ -611,24 +611,24 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Nom du concours *</label>
-                      <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                      <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Date limite de candidature</label>
-                      <input type="date" value={formState.date_limite || ""} onChange={(e) => setFormState({ ...formState, date_limite: e.target.value })} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                      <input type="date" value={formState.date_limite || ""} onChange={(e) => setFormState({ ...formState, date_limite: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Filières ciblées</label>
-                    <input type="text" value={formState.filieres || ""} onChange={(e) => setFormState({ ...formState, filieres: e.target.value })} placeholder="Ex: Informatique, Énergie, Management" className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <input type="text" value={formState.filieres || ""} onChange={(e) => setFormState({ ...formState, filieres: e.target.value })} placeholder="Ex: Informatique, Énergie, Management" className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Écoles partenaires / liées</label>
-                    <input type="text" value={formState.ecoles_liees || ""} onChange={(e) => setFormState({ ...formState, ecoles_liees: e.target.value })} placeholder="Ex: ESP, IPT, Polytechnique" className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <input type="text" value={formState.ecoles_liees || ""} onChange={(e) => setFormState({ ...formState, ecoles_liees: e.target.value })} placeholder="Ex: ESP, IPT, Polytechnique" className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Conditions de participation</label>
-                    <textarea value={formState.conditions || ""} onChange={(e) => setFormState({ ...formState, conditions: e.target.value })} rows={3} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <textarea value={formState.conditions || ""} onChange={(e) => setFormState({ ...formState, conditions: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                 </div>
               )}
@@ -639,28 +639,28 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Nom de la bourse *</label>
-                      <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                      <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Pays d'étude</label>
-                      <input type="text" value={formState.pays || ""} onChange={(e) => setFormState({ ...formState, pays: e.target.value })} placeholder="Ex: Sénégal, France, Canada" className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                      <input type="text" value={formState.pays || ""} onChange={(e) => setFormState({ ...formState, pays: e.target.value })} placeholder="Ex: Sénégal, France, Canada" className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Montant / Couverture</label>
-                      <input type="text" value={formState.montant || ""} onChange={(e) => setFormState({ ...formState, montant: e.target.value })} placeholder="Ex: 50 000 FCFA/mois ou Couverture totale" className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                      <input type="text" value={formState.montant || ""} onChange={(e) => setFormState({ ...formState, montant: e.target.value })} placeholder="Ex: 50 000 FCFA/mois ou Couverture totale" className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Date limite de candidature</label>
-                      <input type="date" value={formState.date_limite || ""} onChange={(e) => setFormState({ ...formState, date_limite: e.target.value })} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                      <input type="date" value={formState.date_limite || ""} onChange={(e) => setFormState({ ...formState, date_limite: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Lien vers la candidature</label>
-                    <input type="text" value={formState.lien_candidature || ""} onChange={(e) => setFormState({ ...formState, lien_candidature: e.target.value })} placeholder="https://exemple.com/apply" className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <input type="text" value={formState.lien_candidature || ""} onChange={(e) => setFormState({ ...formState, lien_candidature: e.target.value })} placeholder="https://exemple.com/apply" className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Conditions d'éligibilité</label>
-                    <textarea value={formState.conditions_eligibilite || ""} onChange={(e) => setFormState({ ...formState, conditions_eligibilite: e.target.value })} rows={3} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <textarea value={formState.conditions_eligibilite || ""} onChange={(e) => setFormState({ ...formState, conditions_eligibilite: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                 </div>
               )}
@@ -671,30 +671,30 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Nom du pays *</label>
-                      <input type="text" required value={formState.pays || ""} onChange={(e) => setFormState({ ...formState, pays: e.target.value })} placeholder="Ex: France, Canada" className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                      <input type="text" required value={formState.pays || ""} onChange={(e) => setFormState({ ...formState, pays: e.target.value })} placeholder="Ex: France, Canada" className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Coût de la vie estimé</label>
-                      <input type="text" value={formState.cout_vie_estime || ""} onChange={(e) => setFormState({ ...formState, cout_vie_estime: e.target.value })} placeholder="Ex: 800€/mois" className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                      <input type="text" value={formState.cout_vie_estime || ""} onChange={(e) => setFormState({ ...formState, cout_vie_estime: e.target.value })} placeholder="Ex: 800€/mois" className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Établissements / Organismes partenaires</label>
-                    <input type="text" value={formState.partenaires || ""} onChange={(e) => setFormState({ ...formState, partenaires: e.target.value })} placeholder="Ex: Campus France, Universités du Québec" className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <input type="text" value={formState.partenaires || ""} onChange={(e) => setFormState({ ...formState, partenaires: e.target.value })} placeholder="Ex: Campus France, Universités du Québec" className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Procédures d'admission</label>
-                    <textarea value={formState.procedures || ""} onChange={(e) => setFormState({ ...formState, procedures: e.target.value })} rows={3} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <textarea value={formState.procedures || ""} onChange={(e) => setFormState({ ...formState, procedures: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-1">Informations de Visa</label>
-                    <textarea value={formState.visa_info || ""} onChange={(e) => setFormState({ ...formState, visa_info: e.target.value })} rows={3} className="w-full rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 px-4 py-2.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500/25" />
+                    <textarea value={formState.visa_info || ""} onChange={(e) => setFormState({ ...formState, visa_info: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-255 bg-white dark:border-gray-800 dark:bg-gray-950 px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                 </div>
               )}
 
               {/* Modal Buttons */}
-              <div className="flex justify-end gap-3 pt-5 border-t border-gray-150 dark:border-gray-800/80">
+              <div className="flex justify-end gap-3 pt-5 border-t border-gray-200 dark:border-gray-800">
                 <button
                   type="button"
                   onClick={() => {
@@ -702,22 +702,20 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                     setShowEditModal(false);
                     setEditingId(null);
                   }}
-                  className="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-xl transition-all"
+                  className="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-lg transition-colors"
                 >
                   Annuler
                 </button>
                 <button
                   type="submit"
                   disabled={formLoading}
-                  className="px-5 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-xl shadow-sm hover:shadow-md transition-all flex items-center justify-center min-w-[100px]"
+                  className="px-5 py-2 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 rounded-lg shadow-sm transition-colors flex items-center justify-center min-w-[100px] cursor-pointer"
                 >
                   {formLoading ? (
                     <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                     </svg>
-                  ) : showAddModal ? (
-                    "Enregistrer"
                   ) : (
                     "Enregistrer"
                   )}
