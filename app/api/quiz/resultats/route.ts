@@ -10,7 +10,7 @@ const INTEREST_FILIERE_MAP: Record<string, string[]> = {
   "Lecture/Écriture": ["Lettres & Sciences Humaines"],
   "Informatique/Technologie": ["Informatique & Numérique"],
   "Nature/Agriculture": ["Agriculture & Environnement"],
-  "Créativité/Communication": ["Arts, Communication et Journalisme"],
+  "Créativité/Communication": ["Arts, Communication & Journalisme"],
   "Voyager/Contact humain": ["Tourisme & Hôtellerie"],
 };
 
@@ -25,7 +25,7 @@ const FILIERE_KEYWORDS: Record<string, string[]> = {
   "Économie & Gestion": ["Économie", "Gestion", "Comptabilité", "Finance", "Management", "Commerce"],
   "Lettres & Sciences Humaines": ["Lettres", "Humaines", "Philosophie", "Histoire", "Géographie", "Langues"],
   "Agriculture & Environnement": ["Agriculture", "Environnement", "Agronomie", "Agricole"],
-  "Arts, Communication et Journalisme": ["Arts", "Communication", "Journalisme", "Audiovisuel", "Multimédia"],
+  "Arts, Communication & Journalisme": ["Arts", "Communication", "Journalisme", "Audiovisuel", "Multimédia"],
   "Tourisme & Hôtellerie": ["Tourisme", "Hôtellerie", "Hôtel", "Voyage"],
 };
 
