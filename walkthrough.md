@@ -1,4 +1,4 @@
-# Walkthrough - Administration & Pages Publiques (Design épuré et sobre)
+# Walkthrough - Administration, Pages Publiques & Quiz d'Orientation
 
 Le développement de Bacversité a franchi une étape importante avec l'ajout de 3 nouveaux modules administratifs complets, la création de l'ensemble des pages publiques pour les étudiants, et une refonte complète du style visuel inspirée de la plateforme Campusen du Ministère de l'Enseignement Supérieur du Sénégal.
 
@@ -43,9 +43,16 @@ Pour conserver un rendu institutionnel et cohérent à 100% :
 - **Globals CSS** : Suppression de la `media query (prefers-color-scheme: dark)` qui forçait un fond noir.
 - **Fichiers TSX** : Suppression systématique de toutes les classes commençant par `dark:` dans l'intégralité du projet.
 
+### 5. Quiz d'orientation avec Scoring et Recommandations
+Ajout d'une fonctionnalité d'aide à la décision d'orientation pour les futurs bacheliers :
+- **Seed des filières** (`db/migrations/0003_filieres_seed.sql`) : Insertion des 10 filières clés au Sénégal.
+- **Composant UI interactif** (`app/quiz/page.tsx`) : Assistant en 4 étapes simples et sobres (BAC, intérêts, budget, étranger).
+- **Logique de Scoring (Serveur)** (`app/api/quiz/resultats/route.ts`) : Attribution de scores aux filières et recherche des établissements associés, avec filtres par type budget et suggestions d'études à l'étranger (pays + bourses) si souhaité.
+
 ---
 
 ## 🚦 Résultats des Vérifications
+- **Base de données Neon** : Migration `0003_filieres_seed.sql` exécutée avec succès (10 filières insérées).
 - **Compilation** : `npm run build` exécuté avec succès.
 - **Vérification Git** : Tous les fichiers ont été poussés sur la branche `main`.
-  - **Hash du Commit** : `578a6a28adbc63f88904b2ddfcb12ebb34ca6ee8`
+  - **Hash du Commit** : `3c68415297e3d9291237a533c55b99ec918aee44`
