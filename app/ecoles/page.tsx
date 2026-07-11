@@ -15,29 +15,32 @@ interface School {
 interface PageProps {
   searchParams: Promise<{
     search?: string;
-    type?: string;
     ville?: string;
+    public?: string;
+    private?: string;
   }>;
 }
 
-async function getSchools(search: string, type: string, ville: string): Promise<School[]> {
+async function getSchools(search: string, ville: string, isPublic: boolean, isPrivate: boolean): Promise<School[]> {
   try {
     let queryText = "SELECT * FROM ecoles WHERE 1=1";
     const params: any[] = [];
 
     if (search) {
       params.push(`%${search}%`);
-      queryText += ` AND (nom ILIKE $${params.length} OR ville ILIKE $${params.length} OR filieres ILIKE $${params.length})`;
-    }
-
-    if (type) {
-      params.push(type);
-      queryText += ` AND type = $${params.length}`;
+      queryText += ` AND (nom ILIKE $${params.length} OR filieres ILIKE $${params.length})`;
     }
 
     if (ville) {
       params.push(ville);
       queryText += ` AND ville = $${params.length}`;
+    }
+
+    // Apply type checkboxes filter logic
+    if (isPublic && !isPrivate) {
+      queryText += " AND type = 'Public'";
+    } else if (isPrivate && !isPublic) {
+      queryText += " AND type = 'Privé'";
     }
 
     queryText += " ORDER BY nom ASC, id DESC";
@@ -65,155 +68,189 @@ async function getDistinctCities(): Promise<string[]> {
 export default async function EcolesPage({ searchParams }: PageProps) {
   const resolvedParams = await searchParams;
   const search = resolvedParams.search || "";
-  const type = resolvedParams.type || "";
   const ville = resolvedParams.ville || "";
+  const isPublic = resolvedParams.public === "true";
+  const isPrivate = resolvedParams.private === "true";
 
   const [schools, cities] = await Promise.all([
-    getSchools(search, type, ville),
+    getSchools(search, ville, isPublic, isPrivate),
     getDistinctCities(),
   ]);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        
-        {/* Page Header */}
-        <div className="text-center md:text-left space-y-2">
-          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white">
-            Annuaire des Établissements
-          </h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            Trouvez les meilleures universités publiques, privées et écoles de formation au Sénégal.
-          </p>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex flex-col">
+      
+      {/* Breadcrumb Bar */}
+      <div className="bg-emerald-50 dark:bg-emerald-950/20 border-b border-emerald-100/60 dark:border-emerald-900/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 text-sm text-gray-500 dark:text-gray-400">
+          <Link href="/" className="text-emerald-600 dark:text-emerald-450 hover:underline font-medium">
+            Accueil
+          </Link>
+          <span className="mx-2 text-gray-400">/</span>
+          <span>Annuaire des écoles</span>
         </div>
+      </div>
 
-        {/* Filters Form */}
-        <form action="/ecoles" method="GET" className="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-150/60 dark:border-gray-800/80 shadow-sm grid grid-cols-1 sm:grid-cols-4 gap-4">
-          
-          {/* Text Search */}
-          <div className="relative">
-            <input
-              type="text"
-              name="search"
-              defaultValue={search}
-              placeholder="Rechercher par nom, filière..."
-              className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/25 text-gray-900 dark:text-white"
-            />
-            <svg className="w-5 h-5 absolute left-3 top-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
+      {/* Main Content (2 Columns Layout) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row gap-8 w-full flex-grow">
+        
+        {/* Left Column: Filter Sidebar */}
+        <aside className="w-full md:w-[280px] shrink-0">
+          <form action="/ecoles" method="GET" className="bg-white dark:bg-gray-900 border border-gray-150/70 dark:border-gray-800/80 rounded-2xl shadow-sm p-6 space-y-6">
+            <div>
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                Affiner ma recherche
+              </h2>
+              <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">
+                Filtrez les établissements
+              </p>
+            </div>
 
-          {/* Type Filter */}
-          <div>
-            <select
-              name="type"
-              defaultValue={type}
-              className="w-full px-3 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/25 text-gray-900 dark:text-white"
-            >
-              <option value="">Tous les types</option>
-              <option value="Public">Public</option>
-              <option value="Privé">Privé</option>
-            </select>
-          </div>
-
-          {/* City Filter */}
-          <div>
-            <select
-              name="ville"
-              defaultValue={ville}
-              className="w-full px-3 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/25 text-gray-900 dark:text-white"
-            >
-              <option value="">Toutes les villes</option>
-              {cities.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Submit & Reset Buttons */}
-          <div className="flex gap-2">
-            <button
-              type="submit"
-              className="flex-1 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow-sm transition-colors cursor-pointer"
-            >
-              Filtrer
-            </button>
-            {(search || type || ville) && (
-              <Link
-                href="/ecoles"
-                className="inline-flex items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-850 text-gray-500 hover:text-gray-700 transition-colors"
-                title="Réinitialiser"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18" />
+            {/* Keyword Search */}
+            <div className="space-y-2">
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                Nom ou mot-clé
+              </label>
+              <div className="relative">
+                <input
+                  type="text"
+                  name="search"
+                  defaultValue={search}
+                  placeholder="Ex: Informatique, ESP..."
+                  className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-gray-200 dark:border-gray-850 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                />
+                <svg className="w-4.5 h-4.5 absolute left-3 top-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-              </Link>
-            )}
-          </div>
+              </div>
+            </div>
 
-        </form>
-
-        {/* Results List */}
-        {schools.length === 0 ? (
-          <div className="bg-white dark:bg-gray-900 border border-gray-200/80 dark:border-gray-800/80 rounded-2xl p-12 text-center">
-            <p className="text-gray-500">Aucun établissement ne correspond à vos critères de recherche.</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {schools.map((school) => (
-              <Link
-                key={school.id}
-                href={`/ecoles/${school.id}`}
-                className="group flex flex-col justify-between bg-white dark:bg-gray-900 border border-gray-150/60 dark:border-gray-800/60 rounded-2xl p-6 hover:shadow-md hover:border-blue-500/20 dark:hover:border-blue-500/20 hover:-translate-y-0.5 transition-all duration-305"
+            {/* City Dropdown */}
+            <div className="space-y-2">
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                Ville
+              </label>
+              <select
+                name="ville"
+                defaultValue={ville}
+                className="w-full px-3 py-2 text-sm rounded-xl border border-gray-200 dark:border-gray-850 bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               >
-                <div className="space-y-4">
-                  <div className="flex justify-between items-start">
-                    <span className={`inline-flex px-2 py-0.5 rounded text-xs font-semibold ${
-                      school.type === "Public"
-                        ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400"
-                        : "bg-amber-50 dark:bg-amber-950/30 text-amber-700 dark:text-amber-400"
-                    }`}>
-                      {school.type}
-                    </span>
-                    {school.ville && (
-                      <span className="text-xs text-gray-400 dark:text-gray-500 flex items-center">
-                        <svg className="w-3.5 h-3.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        {school.ville}
+                <option value="">Toutes les villes</option>
+                {cities.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Type Checkboxes */}
+            <div className="space-y-3">
+              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                Type d'établissement
+              </label>
+              <div className="space-y-2">
+                <label className="flex items-center space-x-2.5 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="public"
+                    value="true"
+                    defaultChecked={isPublic}
+                    className="w-4.5 h-4.5 rounded border-gray-300 dark:border-gray-800 text-emerald-600 focus:ring-emerald-500/30"
+                  />
+                  <span>Public</span>
+                </label>
+                <label className="flex items-center space-x-2.5 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="private"
+                    value="true"
+                    defaultChecked={isPrivate}
+                    className="w-4.5 h-4.5 rounded border-gray-300 dark:border-gray-800 text-emerald-600 focus:ring-emerald-500/30"
+                  />
+                  <span>Privé</span>
+                </label>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="pt-2 space-y-2">
+              <button
+                type="submit"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-bold text-sm py-2.5 rounded-xl transition-all shadow-sm cursor-pointer"
+              >
+                Rechercher
+              </button>
+              
+              {(search || ville || isPublic || isPrivate) && (
+                <div className="text-center">
+                  <Link
+                    href="/ecoles"
+                    className="text-xs text-gray-400 hover:text-emerald-600 dark:text-gray-500 dark:hover:text-emerald-400 transition-colors underline"
+                  >
+                    Réinitialiser les filtres
+                  </Link>
+                </div>
+              )}
+            </div>
+
+          </form>
+        </aside>
+
+        {/* Right Column: Search Results */}
+        <section className="flex-grow space-y-6">
+          <div className="flex justify-between items-center pb-2">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+              {schools.length} {schools.length > 1 ? "écoles trouvées" : "école trouvée"}
+            </h2>
+          </div>
+
+          {/* Results List */}
+          {schools.length === 0 ? (
+            <div className="bg-white dark:bg-gray-900 border border-gray-150/70 dark:border-gray-800/80 rounded-2xl p-12 text-center shadow-sm">
+              <p className="text-gray-500 text-sm">Aucun établissement ne correspond à vos critères.</p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {schools.map((school) => (
+                <div
+                  key={school.id}
+                  className="bg-white dark:bg-gray-900 border border-gray-150/70 dark:border-gray-800/60 rounded-2xl p-5 hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+                >
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                      {school.nom}
+                    </h3>
+                    <div className="flex flex-wrap items-center gap-3">
+                      {school.ville && (
+                        <span className="text-sm text-gray-500 dark:text-gray-400">
+                          📍 {school.ville}
+                        </span>
+                      )}
+                      
+                      <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${
+                        school.type === "Public"
+                          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400"
+                          : "bg-purple-100 text-purple-700 dark:bg-purple-950/40 dark:text-purple-400"
+                      }`}>
+                        {school.type}
                       </span>
-                    )}
+                    </div>
                   </div>
 
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {school.nom}
-                  </h3>
-
-                  {school.filieres && (
-                    <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
-                      Filières : {school.filieres}
-                    </p>
-                  )}
+                  <div className="shrink-0 self-end sm:self-auto">
+                    <Link
+                      href={`/ecoles/${school.id}`}
+                      className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-semibold text-sm hover:underline flex items-center gap-1"
+                    >
+                      Voir détails →
+                    </Link>
+                  </div>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800/80 flex items-center justify-between text-xs text-gray-500">
-                  <span>Frais : <span className="font-semibold text-gray-700 dark:text-gray-300">{school.frais || "N/A"}</span></span>
-                  
-                  <span className="text-blue-600 dark:text-blue-400 font-bold group-hover:underline flex items-center gap-1">
-                    Voir la fiche
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          )}
+        </section>
 
       </div>
     </div>
