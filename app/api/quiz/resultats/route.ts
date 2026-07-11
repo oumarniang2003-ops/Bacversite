@@ -18,7 +18,6 @@ const INTEREST_FILIERE_MAP: Record<string, string[]> = {
 const FILIERE_KEYWORDS: Record<string, string[]> = {
   "Sciences & Ingénierie": ["Sciences", "Ingénierie", "Génie", "Physique", "Chimie", "Mathématiques"],
   "Informatique & Numérique": ["Informatique", "Numérique", "Développement", "Réseaux", "Cybersécurité", "Systems", "Digital"],
-  "Santé & Medecine": ["Santé", "Médecine", "Pharmacie", "Soins", "Infirmier", "Obstétrique"],
   "Santé & Médecine": ["Santé", "Médecine", "Pharmacie", "Soins", "Infirmier", "Obstétrique"],
   "Sciences Sociales & Travail Social": ["Social", "Sociologie", "Psychologie", "Travail Social"],
   "Droit & Sciences Politiques": ["Droit", "Politique", "Juridique"],
@@ -37,9 +36,26 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Les centres d'intérêt sont requis." }, { status: 400 });
     }
 
-    // 1. Scoring logic for filieres
-    const scores: Record<string, number> = {};
+    const ALL_FILIERES = [
+      "Sciences & Ingénierie",
+      "Santé & Médecine",
+      "Droit & Sciences Politiques",
+      "Économie & Gestion",
+      "Lettres & Sciences Humaines",
+      "Informatique & Numérique",
+      "Agriculture & Environnement",
+      "Arts, Communication & Journalisme",
+      "Tourisme & Hôtellerie",
+      "Sciences Sociales & Travail Social",
+    ];
 
+    // Initialize all scores to 0
+    const scores: Record<string, number> = {};
+    ALL_FILIERES.forEach((f) => {
+      scores[f] = 0;
+    });
+
+    // 1. Scoring based on interests
     interests.forEach((interest) => {
       const matchedFilieres = INTEREST_FILIERE_MAP[interest];
       if (matchedFilieres) {
@@ -48,6 +64,34 @@ export async function POST(req: Request) {
         });
       }
     });
+
+    // 2. Scoring based on BAC series
+    if (bacSerie) {
+      const isScientific = ["S1", "S2", "S3", "S4", "S5"].includes(bacSerie);
+      const isLiterary = ["L1", "L2"].includes(bacSerie);
+      const isGestion = bacSerie === "G";
+      const isTechnique = bacSerie === "T";
+
+      if (isScientific) {
+        scores["Sciences & Ingénierie"] += 2;
+        scores["Santé & Médecine"] += 2;
+        scores["Informatique & Numérique"] += 2;
+        scores["Agriculture & Environnement"] += 2;
+      } else if (isLiterary) {
+        scores["Lettres & Sciences Humaines"] += 2;
+        scores["Droit & Sciences Politiques"] += 2;
+        scores["Arts, Communication & Journalisme"] += 2;
+      } else if (isGestion) {
+        scores["Économie & Gestion"] += 2;
+        scores["Tourisme & Hôtellerie"] += 2;
+      } else if (isTechnique) {
+        scores["Sciences & Ingénierie"] += 2;
+        scores["Informatique & Numérique"] += 2;
+      }
+
+      // Toutes séries: léger bonus de +1 pour Sciences Sociales & Travail Social
+      scores["Sciences Sociales & Travail Social"] += 1;
+    }
 
     // Sort filieres by score descending
     const sortedFilieres = Object.entries(scores)
