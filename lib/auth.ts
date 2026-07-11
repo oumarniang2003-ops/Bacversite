@@ -1,7 +1,10 @@
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 
-const SECRET_KEY = process.env.JWT_SECRET || "bacversite-super-secret-jwt-key-2026-admin-system";
+const SECRET_KEY = process.env.JWT_SECRET;
+if (!SECRET_KEY) {
+  throw new Error("JWT_SECRET n'est pas défini dans les variables d'environnement.");
+}
 const key = new TextEncoder().encode(SECRET_KEY);
 
 export interface AdminSession {
