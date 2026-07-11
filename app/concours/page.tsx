@@ -64,12 +64,12 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 flex flex-col">
+    <div className="min-h-screen bg-gray-100 flex flex-col">
       
       {/* Breadcrumb Bar */}
-      <div className="bg-emerald-50 dark:bg-emerald-950/20 border-b border-emerald-100 dark:border-emerald-900/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-sm text-gray-600 dark:text-gray-400">
-          <Link href="/" className="text-emerald-600 dark:text-emerald-450 hover:underline font-medium">
+      <div className="bg-emerald-50 border-b border-emerald-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-sm text-gray-600">
+          <Link href="/" className="text-emerald-600 hover:underline font-medium">
             Accueil
           </Link>
           <span className="mx-2 text-gray-400">/</span>
@@ -82,16 +82,16 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
         
         {/* Left Column: Filters */}
         <aside className="w-full md:w-[280px] shrink-0">
-          <form action="/concours" method="GET" className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg shadow-sm p-6 space-y-5">
+          <form action="/concours" method="GET" className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-5">
             <div>
-              <h2 className="text-lg font-bold text-gray-900 dark:text-white">
+              <h2 className="text-lg font-bold text-gray-900">
                 Affiner ma recherche
               </h2>
             </div>
 
             {/* Keyword Search */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider">
                 Nom ou mot-clé
               </label>
               <input
@@ -99,33 +99,33 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
                 name="search"
                 defaultValue={search}
                 placeholder="Ex: ESP, Journalisme..."
-                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-250 bg-white dark:border-gray-800 dark:bg-gray-950 text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30"
+                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-250 bg-white text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30"
               />
             </div>
 
             {/* Status Checkboxes */}
             <div className="space-y-2">
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider">
                 Statut du concours
               </label>
               <div className="space-y-1.5">
-                <label className="flex items-center space-x-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
+                <label className="flex items-center space-x-2 text-sm text-gray-700 cursor-pointer">
                   <input
                     type="checkbox"
                     name="enCours"
                     value="true"
                     defaultChecked={enCours}
-                    className="w-4 h-4 rounded border-gray-300 dark:border-gray-800 text-emerald-600 focus:ring-emerald-500/30"
+                    className="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500/30"
                   />
                   <span>En cours (Actifs)</span>
                 </label>
-                <label className="flex items-center space-x-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
+                <label className="flex items-center space-x-2 text-sm text-gray-700 cursor-pointer">
                   <input
                     type="checkbox"
                     name="expire"
                     value="true"
                     defaultChecked={expire}
-                    className="w-4 h-4 rounded border-gray-300 dark:border-gray-800 text-emerald-600 focus:ring-emerald-500/30"
+                    className="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500/30"
                   />
                   <span>Fermés / Expirés</span>
                 </label>
@@ -136,7 +136,7 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
             <div className="pt-2 space-y-2">
               <button
                 type="submit"
-                className="w-full bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-bold text-sm py-2 rounded-lg transition-colors shadow-sm cursor-pointer"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm py-2 rounded-lg transition-colors shadow-sm cursor-pointer"
               >
                 Rechercher
               </button>
@@ -145,7 +145,7 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
                 <div className="text-center">
                   <Link
                     href="/concours"
-                    className="text-xs text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-450 transition-colors underline"
+                    className="text-xs text-gray-500 hover:text-emerald-600 transition-colors underline"
                   >
                     Réinitialiser les filtres
                   </Link>
@@ -159,14 +159,14 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
         {/* Right Column: Contest Results */}
         <section className="flex-grow space-y-4">
           <div className="pb-1">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+            <h2 className="text-xl font-bold text-gray-900">
               {contests.length} {contests.length > 1 ? "concours trouvés" : "concours trouvé"}
             </h2>
           </div>
 
           {/* Results List */}
           {contests.length === 0 ? (
-            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-10 text-center shadow-sm">
+            <div className="bg-white border border-gray-200 rounded-lg p-10 text-center shadow-sm">
               <p className="text-gray-500 text-sm">Aucun concours ne correspond à vos critères.</p>
             </div>
           ) : (
@@ -178,24 +178,24 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
                 return (
                   <div
                     key={contest.id}
-                    className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-5 shadow-sm flex flex-col justify-between gap-4"
+                    className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm flex flex-col justify-between gap-4"
                   >
                     <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
                       
                       <div className="space-y-1.5 flex-1">
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                        <h3 className="text-lg font-bold text-gray-900">
                           {contest.nom}
                         </h3>
                         <div className="flex flex-wrap items-center gap-3">
                           {contest.ecoles_liees && (
-                            <span className="text-sm text-gray-500 dark:text-gray-400">
+                            <span className="text-sm text-gray-500">
                               🏫 {contest.ecoles_liees}
                             </span>
                           )}
                           <span className={`inline-flex px-3 py-0.5 rounded-full text-xs font-semibold ${
                             isClosed
-                              ? "bg-red-100 text-red-700 dark:bg-red-950/40 dark:text-red-400"
-                              : "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400"
+                              ? "bg-red-100 text-red-700  "
+                              : "bg-emerald-100 text-emerald-700  "
                           }`}>
                             {isClosed ? "Fermé / Expiré" : "En cours / Actif"}
                           </span>
@@ -204,10 +204,10 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
 
                       {/* Date details */}
                       <div className="text-left sm:text-right shrink-0">
-                        <span className="block text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+                        <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">
                           Date limite
                         </span>
-                        <span className="text-sm font-bold text-gray-900 dark:text-white">
+                        <span className="text-sm font-bold text-gray-900">
                           {contest.date_limite
                             ? new Date(contest.date_limite).toLocaleDateString("fr-FR", {
                                 day: "numeric",
@@ -218,7 +218,7 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
                         </span>
                         {daysLeft !== null && !isClosed && (
                           <span className={`block text-xs font-semibold mt-0.5 ${
-                            daysLeft <= 7 ? "text-red-650 dark:text-red-400" : "text-emerald-600 dark:text-emerald-400"
+                            daysLeft <= 7 ? "text-red-650 " : "text-emerald-600 "
                           }`}>
                             {daysLeft === 0 ? "Aujourd'hui !" : daysLeft === 1 ? "Plus que 1 jour !" : `Plus que ${daysLeft} jours`}
                           </span>
@@ -229,14 +229,14 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
 
                     {/* Detailed info */}
                     {(contest.filieres || contest.conditions) && (
-                      <div className="pt-4 border-t border-gray-150 dark:border-gray-800 space-y-1.5">
+                      <div className="pt-4 border-t border-gray-150 space-y-1.5">
                         {contest.filieres && (
-                          <p className="text-xs text-gray-500 dark:text-gray-450">
+                          <p className="text-xs text-gray-500">
                             <strong>Filières ciblées :</strong> {contest.filieres}
                           </p>
                         )}
                         {contest.conditions && (
-                          <p className="text-xs text-gray-500 dark:text-gray-455">
+                          <p className="text-xs text-gray-500">
                             <strong>Conditions :</strong> {contest.conditions}
                           </p>
                         )}

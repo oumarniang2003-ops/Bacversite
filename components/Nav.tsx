@@ -29,8 +29,8 @@ export default function Nav() {
               href={link.href}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
                 isActive
-                  ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-455 font-semibold"
-                  : "text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 hover:bg-gray-100 dark:hover:bg-gray-850"
+                  ? "bg-emerald-50  text-emerald-600  font-semibold"
+                  : "text-gray-600 hover:text-emerald-600   hover:bg-gray-100 "
               }`}
             >
               {link.label}
@@ -44,7 +44,7 @@ export default function Nav() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           type="button"
-          className="inline-flex items-center justify-center p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-850 focus:outline-none transition-colors"
+          className="inline-flex items-center justify-center p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 focus:outline-none transition-colors"
           aria-expanded={isOpen}
         >
           <span className="sr-only">Ouvrir le menu</span>
@@ -62,7 +62,7 @@ export default function Nav() {
 
       {/* Mobile Menu Dropdown */}
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-56 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-md py-2 z-50">
+        <div className="absolute right-0 top-full mt-2 w-56 rounded-xl bg-white border border-gray-200 shadow-md py-2 z-50">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -72,8 +72,8 @@ export default function Nav() {
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-2 text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border-r-4 border-emerald-600"
-                    : "text-gray-600 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-gray-850"
+                    ? "bg-emerald-50  text-emerald-600  border-r-4 border-emerald-600"
+                    : "text-gray-600 hover:text-emerald-600   hover:bg-gray-50 "
                 }`}
               >
                 {link.label}

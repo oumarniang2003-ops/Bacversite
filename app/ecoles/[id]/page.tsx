@@ -40,14 +40,14 @@ export default async function EcoleDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 py-8">
+    <div className="min-h-screen bg-gray-100 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
         
         {/* Back Link */}
         <div>
           <Link
             href="/ecoles"
-            className="inline-flex items-center text-sm font-bold text-gray-550 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400 transition-colors"
+            className="inline-flex items-center text-sm font-bold text-gray-550 hover:text-emerald-600 transition-colors"
           >
             <svg className="w-4 h-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -57,10 +57,10 @@ export default async function EcoleDetailPage({ params }: PageProps) {
         </div>
 
         {/* Main Details Card */}
-        <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
           
           {/* Header Banner */}
-          <div className="bg-emerald-600 dark:bg-emerald-700 p-8 text-white space-y-3">
+          <div className="bg-emerald-600 p-8 text-white space-y-3">
             <div>
               <span className="inline-flex px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white/20 text-white">
                 {school.type}
@@ -88,20 +88,20 @@ export default async function EcoleDetailPage({ params }: PageProps) {
               
               {/* Filières */}
               <div className="space-y-2">
-                <h2 className="text-base font-bold text-gray-900 dark:text-white border-b border-gray-150 dark:border-gray-850 pb-2">
+                <h2 className="text-base font-bold text-gray-900 border-b border-gray-150 pb-2">
                   Filières & Formations proposées
                 </h2>
-                <div className="text-sm text-gray-600 dark:text-gray-400 whitespace-pre-line leading-relaxed">
+                <div className="text-sm text-gray-600 whitespace-pre-line leading-relaxed">
                   {school.filieres ? school.filieres : "Aucune information disponible sur les filières."}
                 </div>
               </div>
 
               {/* Conditions d'admission */}
               <div className="space-y-2">
-                <h2 className="text-base font-bold text-gray-900 dark:text-white border-b border-gray-150 dark:border-gray-850 pb-2">
+                <h2 className="text-base font-bold text-gray-900 border-b border-gray-150 pb-2">
                   Conditions d'admission
                 </h2>
-                <div className="text-sm text-gray-600 dark:text-gray-400 whitespace-pre-line leading-relaxed">
+                <div className="text-sm text-gray-600 whitespace-pre-line leading-relaxed">
                   {school.conditions_admission ? school.conditions_admission : "Aucune condition d'admission spécifique enregistrée."}
                 </div>
               </div>
@@ -109,20 +109,20 @@ export default async function EcoleDetailPage({ params }: PageProps) {
             </div>
 
             {/* Right sidebar info (1 col) */}
-            <div className="space-y-5 bg-gray-50 dark:bg-gray-950/40 p-5 rounded-lg border border-gray-200 dark:border-gray-850">
-              <h3 className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider">
+            <div className="space-y-5 bg-gray-50 p-5 rounded-lg border border-gray-200">
+              <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
                 Informations pratiques
               </h3>
 
               <div className="space-y-4 text-sm">
                 <div>
-                  <span className="block text-xs font-semibold text-gray-400 dark:text-gray-550 uppercase tracking-wider">Frais de scolarité</span>
-                  <span className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">{school.frais ? school.frais : "Non spécifiés"}</span>
+                  <span className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">Frais de scolarité</span>
+                  <span className="font-bold text-emerald-600 text-sm">{school.frais ? school.frais : "Non spécifiés"}</span>
                 </div>
 
                 <div>
-                  <span className="block text-xs font-semibold text-gray-400 dark:text-gray-550 uppercase tracking-wider">Contact</span>
-                  <span className="font-semibold text-gray-700 dark:text-gray-300">{school.contact ? school.contact : "Non disponible"}</span>
+                  <span className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">Contact</span>
+                  <span className="font-semibold text-gray-700">{school.contact ? school.contact : "Non disponible"}</span>
                 </div>
 
                 {school.site_web && (
@@ -131,7 +131,7 @@ export default async function EcoleDetailPage({ params }: PageProps) {
                       href={school.site_web.startsWith("http") ? school.site_web : `https://${school.site_web}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white text-xs font-bold py-2.5 px-4 rounded-lg transition-colors text-center cursor-pointer"
+                      className="w-full inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-4 rounded-lg transition-colors text-center cursor-pointer"
                     >
                       Visiter le site officiel
                     </a>

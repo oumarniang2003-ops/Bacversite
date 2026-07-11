@@ -78,12 +78,12 @@ export default async function EcolesPage({ searchParams }: PageProps) {
   ]);
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 flex flex-col">
+    <div className="min-h-screen bg-gray-100 flex flex-col">
       
       {/* Breadcrumb Bar */}
-      <div className="bg-emerald-50 dark:bg-emerald-950/20 border-b border-emerald-100 dark:border-emerald-900/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-sm text-gray-600 dark:text-gray-400">
-          <Link href="/" className="text-emerald-600 dark:text-emerald-450 hover:underline font-medium">
+      <div className="bg-emerald-50 border-b border-emerald-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-sm text-gray-600">
+          <Link href="/" className="text-emerald-600 hover:underline font-medium">
             Accueil
           </Link>
           <span className="mx-2 text-gray-400">/</span>
@@ -96,16 +96,16 @@ export default async function EcolesPage({ searchParams }: PageProps) {
         
         {/* Left Column: Filter Sidebar */}
         <aside className="w-full md:w-[280px] shrink-0">
-          <form action="/ecoles" method="GET" className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg shadow-sm p-6 space-y-5">
+          <form action="/ecoles" method="GET" className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-5">
             <div>
-              <h2 className="text-lg font-bold text-gray-900 dark:text-white">
+              <h2 className="text-lg font-bold text-gray-900">
                 Affiner ma recherche
               </h2>
             </div>
 
             {/* Keyword Search */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider">
                 Nom ou mot-clé
               </label>
               <input
@@ -113,19 +113,19 @@ export default async function EcolesPage({ searchParams }: PageProps) {
                 name="search"
                 defaultValue={search}
                 placeholder="Ex: ESP, Polytechnique..."
-                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-250 bg-white dark:border-gray-800 dark:bg-gray-950 text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30"
+                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-250 bg-white text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30"
               />
             </div>
 
             {/* City Dropdown */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider">
                 Ville
               </label>
               <select
                 name="ville"
                 defaultValue={ville}
-                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-250 bg-white dark:border-gray-800 dark:bg-gray-950 text-gray-900 dark:text-white focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30"
+                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-250 bg-white text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30"
               >
                 <option value="">Toutes les villes</option>
                 {cities.map((c) => (
@@ -138,27 +138,27 @@ export default async function EcolesPage({ searchParams }: PageProps) {
 
             {/* Type Checkboxes */}
             <div className="space-y-2">
-              <label className="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider">
                 Type d'établissement
               </label>
               <div className="space-y-1.5">
-                <label className="flex items-center space-x-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
+                <label className="flex items-center space-x-2 text-sm text-gray-700 cursor-pointer">
                   <input
                     type="checkbox"
                     name="public"
                     value="true"
                     defaultChecked={isPublic}
-                    className="w-4 h-4 rounded border-gray-300 dark:border-gray-800 text-emerald-600 focus:ring-emerald-500/30"
+                    className="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500/30"
                   />
                   <span>Public</span>
                 </label>
-                <label className="flex items-center space-x-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
+                <label className="flex items-center space-x-2 text-sm text-gray-700 cursor-pointer">
                   <input
                     type="checkbox"
                     name="private"
                     value="true"
                     defaultChecked={isPrivate}
-                    className="w-4 h-4 rounded border-gray-300 dark:border-gray-800 text-emerald-600 focus:ring-emerald-500/30"
+                    className="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500/30"
                   />
                   <span>Privé</span>
                 </label>
@@ -169,7 +169,7 @@ export default async function EcolesPage({ searchParams }: PageProps) {
             <div className="pt-2 space-y-2">
               <button
                 type="submit"
-                className="w-full bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-bold text-sm py-2 rounded-lg transition-colors shadow-sm cursor-pointer"
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm py-2 rounded-lg transition-colors shadow-sm cursor-pointer"
               >
                 Filtrer
               </button>
@@ -178,7 +178,7 @@ export default async function EcolesPage({ searchParams }: PageProps) {
                 <div className="text-center">
                   <Link
                     href="/ecoles"
-                    className="text-xs text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-450 transition-colors underline"
+                    className="text-xs text-gray-500 hover:text-emerald-600 transition-colors underline"
                   >
                     Réinitialiser les filtres
                   </Link>
@@ -192,14 +192,14 @@ export default async function EcolesPage({ searchParams }: PageProps) {
         {/* Right Column: Search Results */}
         <section className="flex-grow space-y-4">
           <div className="pb-1">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+            <h2 className="text-xl font-bold text-gray-900">
               {schools.length} {schools.length > 1 ? "écoles trouvées" : "école trouvée"}
             </h2>
           </div>
 
           {/* Results List */}
           {schools.length === 0 ? (
-            <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-10 text-center shadow-sm">
+            <div className="bg-white border border-gray-200 rounded-lg p-10 text-center shadow-sm">
               <p className="text-gray-500 text-sm">Aucun établissement ne correspond à vos critères.</p>
             </div>
           ) : (
@@ -207,23 +207,23 @@ export default async function EcolesPage({ searchParams }: PageProps) {
               {schools.map((school) => (
                 <div
                   key={school.id}
-                  className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-5 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+                  className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
                 >
                   <div className="space-y-1.5">
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                    <h3 className="text-lg font-bold text-gray-900">
                       {school.nom}
                     </h3>
                     <div className="flex flex-wrap items-center gap-3">
                       {school.ville && (
-                        <span className="text-sm text-gray-500 dark:text-gray-400">
+                        <span className="text-sm text-gray-500">
                           📍 {school.ville}
                         </span>
                       )}
                       
                       <span className={`inline-flex px-3 py-0.5 rounded-full text-xs font-semibold ${
                         school.type === "Public"
-                          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400"
-                          : "bg-purple-100 text-purple-700 dark:bg-purple-950/40 dark:text-purple-400"
+                          ? "bg-emerald-100 text-emerald-700  "
+                          : "bg-purple-100 text-purple-700  "
                       }`}>
                         {school.type}
                       </span>
@@ -233,7 +233,7 @@ export default async function EcolesPage({ searchParams }: PageProps) {
                   <div className="shrink-0 self-end sm:self-auto">
                     <Link
                       href={`/ecoles/${school.id}`}
-                      className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-350 font-semibold text-sm hover:underline flex items-center gap-1"
+                      className="text-emerald-600 hover:text-emerald-700 font-semibold text-sm hover:underline flex items-center gap-1"
                     >
                       Voir détails →
                     </Link>
