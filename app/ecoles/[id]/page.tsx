@@ -41,7 +41,7 @@ export default async function EcoleDetailPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-gray-100 py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
         
         {/* Back Link */}
         <div>
