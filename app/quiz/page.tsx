@@ -157,8 +157,8 @@ export default function QuizPage() {
                         onClick={() => setBacSerie(serie)}
                         className={`py-3 px-4 rounded-lg text-sm font-semibold border text-center transition-colors cursor-pointer ${
                           bacSerie === serie
-                            ? "bg-emerald-650 text-white border-emerald-650"
-                            : "bg-white text-gray-700 border-gray-250 hover:bg-gray-50"
+                            ? "bg-emerald-600 text-white border-emerald-600"
+                            : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
                         }`}
                       >
                         {serie}
@@ -171,7 +171,7 @@ export default function QuizPage() {
                       type="button"
                       disabled={!bacSerie}
                       onClick={() => setStep(2)}
-                      className="px-6 py-2.5 text-sm font-semibold text-white bg-emerald-655 hover:bg-emerald-700 rounded-lg shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                      className="px-6 py-2.5 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
                     >
                       Suivant
                     </button>
@@ -226,7 +226,7 @@ export default function QuizPage() {
                       type="button"
                       disabled={selectedInterests.length === 0}
                       onClick={() => setStep(3)}
-                      className="px-6 py-2.5 text-sm font-semibold text-white bg-emerald-650 hover:bg-emerald-700 rounded-lg shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                      className="px-6 py-2.5 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
                     >
                       Suivant
                     </button>
@@ -276,7 +276,7 @@ export default function QuizPage() {
                       type="button"
                       disabled={!budget}
                       onClick={() => setStep(4)}
-                      className="px-6 py-2.5 text-sm font-semibold text-white bg-emerald-650 hover:bg-emerald-700 rounded-lg shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                      className="px-6 py-2.5 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
                     >
                       Suivant
                     </button>

@@ -113,7 +113,7 @@ export default async function EcolesPage({ searchParams }: PageProps) {
                 name="search"
                 defaultValue={search}
                 placeholder="Ex: ESP, Polytechnique..."
-                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-250 bg-white text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30"
+                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 bg-white text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30"
               />
             </div>
 
@@ -125,7 +125,7 @@ export default async function EcolesPage({ searchParams }: PageProps) {
               <select
                 name="ville"
                 defaultValue={ville}
-                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-250 bg-white text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30"
+                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 bg-white text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30"
               >
                 <option value="">Toutes les villes</option>
                 {cities.map((c) => (

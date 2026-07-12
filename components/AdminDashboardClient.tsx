@@ -569,38 +569,38 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Nom de l'établissement *</label>
-                    <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-lg border border-gray-250 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Type</label>
-                    <select value={formState.type || "Public"} onChange={(e) => setFormState({ ...formState, type: e.target.value })} className="w-full rounded-lg border border-gray-250 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30">
+                    <select value={formState.type || "Public"} onChange={(e) => setFormState({ ...formState, type: e.target.value })} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30">
                       <option value="Public">Public</option>
                       <option value="Privé">Privé</option>
                     </select>
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Ville</label>
-                    <input type="text" value={formState.ville || ""} onChange={(e) => setFormState({ ...formState, ville: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <input type="text" value={formState.ville || ""} onChange={(e) => setFormState({ ...formState, ville: e.target.value })} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Frais de scolarité</label>
-                    <input type="text" value={formState.frais || ""} onChange={(e) => setFormState({ ...formState, frais: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <input type="text" value={formState.frais || ""} onChange={(e) => setFormState({ ...formState, frais: e.target.value })} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Contact</label>
-                    <input type="text" value={formState.contact || ""} onChange={(e) => setFormState({ ...formState, contact: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <input type="text" value={formState.contact || ""} onChange={(e) => setFormState({ ...formState, contact: e.target.value })} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Site Web</label>
-                    <input type="text" value={formState.site_web || ""} onChange={(e) => setFormState({ ...formState, site_web: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <input type="text" value={formState.site_web || ""} onChange={(e) => setFormState({ ...formState, site_web: e.target.value })} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div className="sm:col-span-2">
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Filières</label>
-                    <textarea value={formState.filieres || ""} onChange={(e) => setFormState({ ...formState, filieres: e.target.value })} rows={2} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <textarea value={formState.filieres || ""} onChange={(e) => setFormState({ ...formState, filieres: e.target.value })} rows={2} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div className="sm:col-span-2">
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Conditions d'admission</label>
-                    <textarea value={formState.conditions_admission || ""} onChange={(e) => setFormState({ ...formState, conditions_admission: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <textarea value={formState.conditions_admission || ""} onChange={(e) => setFormState({ ...formState, conditions_admission: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                 </div>
               )}
@@ -611,24 +611,24 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Nom du concours *</label>
-                      <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                      <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Date limite de candidature</label>
-                      <input type="date" value={formState.date_limite || ""} onChange={(e) => setFormState({ ...formState, date_limite: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                      <input type="date" value={formState.date_limite || ""} onChange={(e) => setFormState({ ...formState, date_limite: e.target.value })} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Filières ciblées</label>
-                    <input type="text" value={formState.filieres || ""} onChange={(e) => setFormState({ ...formState, filieres: e.target.value })} placeholder="Ex: Informatique, Énergie, Management" className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <input type="text" value={formState.filieres || ""} onChange={(e) => setFormState({ ...formState, filieres: e.target.value })} placeholder="Ex: Informatique, Énergie, Management" className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Écoles partenaires / liées</label>
-                    <input type="text" value={formState.ecoles_liees || ""} onChange={(e) => setFormState({ ...formState, ecoles_liees: e.target.value })} placeholder="Ex: ESP, IPT, Polytechnique" className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <input type="text" value={formState.ecoles_liees || ""} onChange={(e) => setFormState({ ...formState, ecoles_liees: e.target.value })} placeholder="Ex: ESP, IPT, Polytechnique" className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Conditions de participation</label>
-                    <textarea value={formState.conditions || ""} onChange={(e) => setFormState({ ...formState, conditions: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <textarea value={formState.conditions || ""} onChange={(e) => setFormState({ ...formState, conditions: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                 </div>
               )}
@@ -639,28 +639,28 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Nom de la bourse *</label>
-                      <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                      <input type="text" required value={formState.nom || ""} onChange={(e) => setFormState({ ...formState, nom: e.target.value })} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Pays d'étude</label>
-                      <input type="text" value={formState.pays || ""} onChange={(e) => setFormState({ ...formState, pays: e.target.value })} placeholder="Ex: Sénégal, France, Canada" className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                      <input type="text" value={formState.pays || ""} onChange={(e) => setFormState({ ...formState, pays: e.target.value })} placeholder="Ex: Sénégal, France, Canada" className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Montant / Couverture</label>
-                      <input type="text" value={formState.montant || ""} onChange={(e) => setFormState({ ...formState, montant: e.target.value })} placeholder="Ex: 50 000 FCFA/mois ou Couverture totale" className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                      <input type="text" value={formState.montant || ""} onChange={(e) => setFormState({ ...formState, montant: e.target.value })} placeholder="Ex: 50 000 FCFA/mois ou Couverture totale" className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Date limite de candidature</label>
-                      <input type="date" value={formState.date_limite || ""} onChange={(e) => setFormState({ ...formState, date_limite: e.target.value })} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                      <input type="date" value={formState.date_limite || ""} onChange={(e) => setFormState({ ...formState, date_limite: e.target.value })} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Lien vers la candidature</label>
-                    <input type="text" value={formState.lien_candidature || ""} onChange={(e) => setFormState({ ...formState, lien_candidature: e.target.value })} placeholder="https://exemple.com/apply" className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <input type="text" value={formState.lien_candidature || ""} onChange={(e) => setFormState({ ...formState, lien_candidature: e.target.value })} placeholder="https://exemple.com/apply" className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Conditions d'éligibilité</label>
-                    <textarea value={formState.conditions_eligibilite || ""} onChange={(e) => setFormState({ ...formState, conditions_eligibilite: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <textarea value={formState.conditions_eligibilite || ""} onChange={(e) => setFormState({ ...formState, conditions_eligibilite: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                 </div>
               )}
@@ -671,24 +671,24 @@ export default function AdminDashboardClient({ adminEmail }: AdminDashboardClien
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Nom du pays *</label>
-                      <input type="text" required value={formState.pays || ""} onChange={(e) => setFormState({ ...formState, pays: e.target.value })} placeholder="Ex: France, Canada" className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                      <input type="text" required value={formState.pays || ""} onChange={(e) => setFormState({ ...formState, pays: e.target.value })} placeholder="Ex: France, Canada" className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                     <div>
                       <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Coût de la vie estimé</label>
-                      <input type="text" value={formState.cout_vie_estime || ""} onChange={(e) => setFormState({ ...formState, cout_vie_estime: e.target.value })} placeholder="Ex: 800€/mois" className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                      <input type="text" value={formState.cout_vie_estime || ""} onChange={(e) => setFormState({ ...formState, cout_vie_estime: e.target.value })} placeholder="Ex: 800€/mois" className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Établissements / Organismes partenaires</label>
-                    <input type="text" value={formState.partenaires || ""} onChange={(e) => setFormState({ ...formState, partenaires: e.target.value })} placeholder="Ex: Campus France, Universités du Québec" className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <input type="text" value={formState.partenaires || ""} onChange={(e) => setFormState({ ...formState, partenaires: e.target.value })} placeholder="Ex: Campus France, Universités du Québec" className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Procédures d'admission</label>
-                    <textarea value={formState.procedures || ""} onChange={(e) => setFormState({ ...formState, procedures: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <textarea value={formState.procedures || ""} onChange={(e) => setFormState({ ...formState, procedures: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Informations de Visa</label>
-                    <textarea value={formState.visa_info || ""} onChange={(e) => setFormState({ ...formState, visa_info: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-255 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
+                    <textarea value={formState.visa_info || ""} onChange={(e) => setFormState({ ...formState, visa_info: e.target.value })} rows={3} className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm text-gray-900 focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600/30" />
                   </div>
                 </div>
               )}
