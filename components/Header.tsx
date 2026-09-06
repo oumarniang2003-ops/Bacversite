@@ -1,7 +1,10 @@
 import Link from "next/link";
 import Nav from "./Nav";
+import { getStudentSession } from "@/lib/auth";
 
-export default function Header() {
+export default async function Header() {
+  const session = await getStudentSession();
+
   return (
     <header className="sticky top-0 z-40 w-full border-b border-gray-200 bg-white transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -20,13 +23,28 @@ export default function Header() {
         <Nav />
 
         {/* Action Button */}
-        <div className="hidden sm:flex items-center space-x-4">
+        <div className="hidden sm:flex items-center space-x-3">
           <Link
             href="/quiz"
             className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition-colors duration-300"
           >
             Faire le Quiz
           </Link>
+          {session ? (
+            <Link
+              href="/compte"
+              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-300"
+            >
+              {session.nom.split(" ")[0]}
+            </Link>
+          ) : (
+            <Link
+              href="/connexion"
+              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-300"
+            >
+              Se connecter
+            </Link>
+          )}
         </div>
 
       </div>

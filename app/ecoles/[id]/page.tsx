@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { query } from "@/lib/db";
+import { getStudentSession } from "@/lib/auth";
+import FavoriButton from "@/components/FavoriButton";
 
 interface School {
   id: number;
@@ -39,6 +41,16 @@ export default async function EcoleDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  const session = await getStudentSession();
+  let isFavorited = false;
+  if (session) {
+    const res = await query(
+      "SELECT 1 FROM student_favoris WHERE student_id = $1 AND item_type = 'ecole' AND item_id = $2",
+      [session.id, school.id]
+    );
+    isFavorited = res.rows.length > 0;
+  }
+
   return (
     <div className="min-h-screen bg-gray-100 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
@@ -61,10 +73,16 @@ export default async function EcoleDetailPage({ params }: PageProps) {
           
           {/* Header Banner */}
           <div className="bg-emerald-600 p-8 text-white space-y-3">
-            <div>
+            <div className="flex items-start justify-between">
               <span className="inline-flex px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white/20 text-white">
                 {school.type}
               </span>
+              <FavoriButton
+                itemType="ecole"
+                itemId={school.id}
+                initialFavorited={isFavorited}
+                isLoggedIn={!!session}
+              />
             </div>
             <h1 className="text-xl sm:text-2xl font-extrabold leading-tight">
               {school.nom}
