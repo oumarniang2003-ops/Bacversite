@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import { query } from "@/lib/db";
 import { getStudentSession } from "@/lib/auth";
 import FavoriButton from "@/components/FavoriButton";
+
+export const metadata: Metadata = {
+  title: "Études à l'étranger",
+  description:
+    "Démarches, coût de la vie et universités partenaires pour étudier à l'étranger depuis le Sénégal, pays par pays.",
+};
 
 interface StudyDestination {
   id: number;

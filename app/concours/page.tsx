@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { query } from "@/lib/db";
 import { getStudentSession } from "@/lib/auth";
 import FavoriButton from "@/components/FavoriButton";
+
+export const metadata: Metadata = {
+  title: "Concours d'entrée aux grandes écoles",
+  description:
+    "Concours d'entrée aux grandes écoles et à la fonction publique au Sénégal : filières, dates limites et conditions de participation.",
+};
 
 interface Contest {
   id: number;

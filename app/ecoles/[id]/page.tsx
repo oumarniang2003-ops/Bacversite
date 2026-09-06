@@ -1,3 +1,5 @@
+import { cache } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { query } from "@/lib/db";
@@ -22,7 +24,9 @@ interface PageProps {
   }>;
 }
 
-async function getSchool(id: string): Promise<School | null> {
+// cache() dedupes this call between generateMetadata and the page
+// component so a single request only hits the DB once.
+const getSchool = cache(async (id: string): Promise<School | null> => {
   try {
     const res = await query("SELECT * FROM ecoles WHERE id = $1", [id]);
     if (res.rows.length === 0) return null;
@@ -31,6 +35,22 @@ async function getSchool(id: string): Promise<School | null> {
     console.error("Erreur lors de la récupération des détails de l'école :", error);
     return null;
   }
+});
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const school = await getSchool(resolvedParams.id);
+
+  if (!school) {
+    return { title: "École non trouvée" };
+  }
+
+  return {
+    title: school.nom,
+    description: `${school.nom}${school.ville ? ` à ${school.ville}` : ""} : filières, frais de scolarité et conditions d'admission.${
+      school.type ? ` Établissement ${school.type.toLowerCase()}.` : ""
+    }`,
+  };
 }
 
 export default async function EcoleDetailPage({ params }: PageProps) {

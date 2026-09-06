@@ -14,8 +14,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "Bacversité - Orientation & Préparation Universitaire",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Bacversité - Orientation & Préparation Universitaire",
+    template: "%s | Bacversité",
+  },
   description: "La plateforme d'orientation et de préparation aux concours pour les bacheliers. Trouvez votre école, préparez votre baccalauréat et vos concours.",
 };
 

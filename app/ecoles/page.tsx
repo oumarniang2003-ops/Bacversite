@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { query } from "@/lib/db";
+
+export const metadata: Metadata = {
+  title: "Écoles & Universités au Sénégal",
+  description:
+    "Annuaire des écoles et universités publiques et privées du Sénégal : filières, frais de scolarité, conditions d'admission et contacts.",
+};
 
 interface School {
   id: number;

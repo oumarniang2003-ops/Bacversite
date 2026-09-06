@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { query } from "@/lib/db";
 import { getStudentSession } from "@/lib/auth";
 import FavoriButton from "@/components/FavoriButton";
+
+export const metadata: Metadata = {
+  title: "Bourses d'études",
+  description:
+    "Bourses d'études nationales et internationales ouvertes aux étudiants sénégalais : dates limites, montants et conditions d'éligibilité.",
+};
 
 interface Scholarship {
   id: number;
