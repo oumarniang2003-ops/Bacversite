@@ -1,5 +1,6 @@
-import Link from "next/link";
 import { query } from "@/lib/db";
+import { getStudentSession } from "@/lib/auth";
+import FavoriButton from "@/components/FavoriButton";
 
 interface StudyDestination {
   id: number;
@@ -22,6 +23,16 @@ async function getDestinations(): Promise<StudyDestination[]> {
 
 export default async function EtrangerPage() {
   const destinations = await getDestinations();
+
+  const session = await getStudentSession();
+  let favoritedIds = new Set<number>();
+  if (session) {
+    const res = await query<{ item_id: number }>(
+      "SELECT item_id FROM student_favoris WHERE student_id = $1 AND item_type = 'etude_etranger'",
+      [session.id]
+    );
+    favoritedIds = new Set(res.rows.map((r) => r.item_id));
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 py-8">
@@ -57,11 +68,19 @@ export default async function EtrangerPage() {
                     </div>
                     <h2 className="text-lg font-bold">{dest.pays}</h2>
                   </div>
-                  {dest.cout_vie_estime && (
-                    <span className="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">
-                      Coût de la vie : {dest.cout_vie_estime}
-                    </span>
-                  )}
+                  <div className="flex items-center gap-3">
+                    {dest.cout_vie_estime && (
+                      <span className="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">
+                        Coût de la vie : {dest.cout_vie_estime}
+                      </span>
+                    )}
+                    <FavoriButton
+                      itemType="etude_etranger"
+                      itemId={dest.id}
+                      initialFavorited={favoritedIds.has(dest.id)}
+                      isLoggedIn={!!session}
+                    />
+                  </div>
                 </div>
 
                 {/* Content Sections */}

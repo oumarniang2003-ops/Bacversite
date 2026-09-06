@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { query } from "@/lib/db";
+import { getStudentSession } from "@/lib/auth";
+import FavoriButton from "@/components/FavoriButton";
 
 interface Contest {
   id: number;
@@ -55,6 +57,16 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
   const expire = resolvedParams.expire === "true";
 
   const contests = await getContests(search, enCours, expire);
+
+  const session = await getStudentSession();
+  let favoritedIds = new Set<number>();
+  if (session) {
+    const res = await query<{ item_id: number }>(
+      "SELECT item_id FROM student_favoris WHERE student_id = $1 AND item_type = 'concours'",
+      [session.id]
+    );
+    favoritedIds = new Set(res.rows.map((r) => r.item_id));
+  }
 
   const getDaysRemaining = (dateStr: string | null) => {
     if (!dateStr) return null;
@@ -202,27 +214,35 @@ export default async function ConcoursPage({ searchParams }: PageProps) {
                         </div>
                       </div>
 
-                      {/* Date details */}
-                      <div className="text-left sm:text-right shrink-0">
-                        <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">
-                          Date limite
-                        </span>
-                        <span className="text-sm font-bold text-gray-900">
-                          {contest.date_limite
-                            ? new Date(contest.date_limite).toLocaleDateString("fr-FR", {
-                                day: "numeric",
-                                month: "long",
-                                year: "numeric",
-                              })
-                            : "Non spécifiée"}
-                        </span>
-                        {daysLeft !== null && !isClosed && (
-                          <span className={`block text-xs font-semibold mt-0.5 ${
-                            daysLeft <= 7 ? "text-red-650 " : "text-emerald-600 "
-                          }`}>
-                            {daysLeft === 0 ? "Aujourd'hui !" : daysLeft === 1 ? "Plus que 1 jour !" : `Plus que ${daysLeft} jours`}
+                      {/* Favori + Date details */}
+                      <div className="flex items-start gap-3 shrink-0">
+                        <FavoriButton
+                          itemType="concours"
+                          itemId={contest.id}
+                          initialFavorited={favoritedIds.has(contest.id)}
+                          isLoggedIn={!!session}
+                        />
+                        <div className="text-left sm:text-right shrink-0">
+                          <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">
+                            Date limite
                           </span>
-                        )}
+                          <span className="text-sm font-bold text-gray-900">
+                            {contest.date_limite
+                              ? new Date(contest.date_limite).toLocaleDateString("fr-FR", {
+                                  day: "numeric",
+                                  month: "long",
+                                  year: "numeric",
+                                })
+                              : "Non spécifiée"}
+                          </span>
+                          {daysLeft !== null && !isClosed && (
+                            <span className={`block text-xs font-semibold mt-0.5 ${
+                              daysLeft <= 7 ? "text-red-650 " : "text-emerald-600 "
+                            }`}>
+                              {daysLeft === 0 ? "Aujourd'hui !" : daysLeft === 1 ? "Plus que 1 jour !" : `Plus que ${daysLeft} jours`}
+                            </span>
+                          )}
+                        </div>
                       </div>
 
                     </div>

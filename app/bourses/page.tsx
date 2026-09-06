@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { query } from "@/lib/db";
+import { getStudentSession } from "@/lib/auth";
+import FavoriButton from "@/components/FavoriButton";
 
 interface Scholarship {
   id: number;
@@ -56,6 +58,16 @@ export default async function BoursesPage({ searchParams }: PageProps) {
   const expire = resolvedParams.expire === "true";
 
   const scholarships = await getScholarships(search, enCours, expire);
+
+  const session = await getStudentSession();
+  let favoritedIds = new Set<number>();
+  if (session) {
+    const res = await query<{ item_id: number }>(
+      "SELECT item_id FROM student_favoris WHERE student_id = $1 AND item_type = 'bourse'",
+      [session.id]
+    );
+    favoritedIds = new Set(res.rows.map((r) => r.item_id));
+  }
 
   const getDaysRemaining = (dateStr: string | null) => {
     if (!dateStr) return null;
@@ -201,8 +213,15 @@ export default async function BoursesPage({ searchParams }: PageProps) {
                         </div>
                       </div>
 
-                      {/* Date details */}
-                      <div className="text-left sm:text-right shrink-0">
+                      {/* Favori + Date details */}
+                      <div className="flex items-start gap-3 shrink-0">
+                        <FavoriButton
+                          itemType="bourse"
+                          itemId={sch.id}
+                          initialFavorited={favoritedIds.has(sch.id)}
+                          isLoggedIn={!!session}
+                        />
+                        <div className="text-left sm:text-right shrink-0">
                         <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider">
                           Date limite
                         </span>
@@ -222,6 +241,7 @@ export default async function BoursesPage({ searchParams }: PageProps) {
                             {daysLeft === 0 ? "Aujourd'hui !" : daysLeft === 1 ? "Plus que 1 jour !" : `Plus que ${daysLeft} jours`}
                           </span>
                         )}
+                        </div>
                       </div>
 
                     </div>
